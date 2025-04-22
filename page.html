@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jimena Ortega | Portafolio</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #121212;
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      line-height: 1.6;
+    }
+
+    nav {
+      background: #1e1e1e;
+      text-align: center;
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      transition: background 0.3s;
+    }
+
+    nav a:hover {
+      background: #ff8bb3;
+      color: #000;
+    }
+
+    section {
+      padding: 3rem 1rem;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .hero {
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      color: #ffb6c1;
+    }
+
+    .hero h2 {
+      font-size: 1.5rem;
+      color: #f3c6dc;
+    }
+
+    .about h2, .projects h2, .skills h2, .links h2, footer h2 {
+      color: #ff9ecf;
+    }
+
+    .about p {
+      margin-top: 1rem;
+      color: #ddd;
+    }
+
+    .about a {
+      color: #ffb6c1;
+      text-decoration: none;
+    }
+
+    .projects {
+      text-align: center;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .card {
+      background: linear-gradient(135deg, #ffd6e8, #e8c6ff);
+      color: #1e1e1e;
+      padding: 1rem;
+      border-radius: 12px;
+      font-weight: bold;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 4px 12px rgba(255, 182, 193, 0.4);
+    }
+
+    .card span {
+      display: block;
+      margin-top: 0.5rem;
+      font-size: 0.8rem;
+      font-weight: normal;
+    }
+
+    .skills {
+      text-align: center;
+    }
+
+    .skill-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .skill {
+      background: linear-gradient(135deg, #ffe0f0, #f0d4ff);
+      color: #1e1e1e;
+      padding: 1rem;
+      border-radius: 12px;
+      font-weight: 600;
+      transition: transform 0.2s ease;
+    }
+
+    .skill:hover {
+      transform: scale(1.05);
+    }
+
+    .links {
+      text-align: center;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .links a {
+      border: 1px solid #ffb6c1;
+      padding: 0.5rem 1.2rem;
+      text-decoration: none;
+      color: white;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+    }
+
+    .links a:hover {
+      background: #ffb6c1;
+      color: #121212;
+    }
+
+    footer {
+      text-align: center;
+      border-top: 1px solid #333;
+      padding: 2rem 1rem;
+      color: #aaa;
+    }
+
+    footer a {
+      color: #ff9ecf;
+      text-decoration: none;
+    }
+
+    @media (max-width: 600px) {
+      nav ul {
+        flex-direction: column;
+        gap: 1rem;
+      }
+    }
+
+    
+    .pantalla-inicio {
+      transition: opacity 1.5s ease-out,visibility 1.5s;
+      position: relative;
+      height: 100vh;
+      background: linear-gradient(135deg,#1f1f1f,#2a1a24,#3b2a35);
+      background-size: 400% 400%;
+      animation: movimientoDegradado 10s ease infinite;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+
+    
+    }
+
+    .pantalla-inicio.oculta {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .contenido-inicio {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: white;
+      animation: fadeInUp 1.6s ease-out;
+    }
+
+    .contenido-inicio h1 {
+      font-size: 5rem;
+      color: #ffb6c1;
+      font-weight: 600;
+      letter-spacing: 2px;
+    }
+
+    .contenido-inicio p {
+      font-size: 1.5rem;
+      color: #f3c6dc;
+      margin-top: 1rem;
+      letter-spacing: 1px;
+    }
+
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(40px) scale(0.95);
+      }
+      100%{
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Pantalla de inicio -->
+  <div class="pantalla-inicio" id="pantallaInicio">
+    <div class="contenido-inicio">
+      <h1>Bienvenido</h1>
+      <p><strong>Desliza para ver el portafolio</strong></p>
+    </div>
+  </div>
+
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#home">Inicio</a></li>
+        <li><a href="#about">Sobre Mí</a></li>
+        <li><a href="#projects">Proyectos</a></li>
+        <li><a href="#skills">Habilidades</a></li>
+        <li><a href="#contact">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <h1>Portafolio</h1>
+      <h2>Jimena Ortega</h2>
+      <h3>Ingeniería en Software</h3>
+    </section>
+
+    <section id="about" class="about">
+      <h2>Sobre Mí</h2>
+      <p>
+        Hola, soy Jimena, estudiante de Ingeniería en Software con interés particular en el área de machine learning...
+      </p>
+    </section>
+
+    <section id="projects" class="projects">
+      <h2>Proyectos</h2>
+      <div class="project-grid">
+        <div class="card">Sistema Hotelero <span>Java • Archivos</span></div>
+        <div class="card">Clasificador Iris PCA <span>Python • Visualización</span></div>
+        <div class="card">Regresión Dosis-Olvido <span>Python</span></div>
+        <div class="card">PCA vs t-SNE Visualizer <span>Python • ML • Gráficas</span></div>
+        <div class="card">Detector de Spam SMS <span>NLP • Naive Bayes</span></div>
+      </div>
+    </section>
+
+    <section id="skills" class="skills">
+      <h2>Habilidades</h2>
+      <h3 style="color:#ffb6c1; margin-top:2rem;">Habilidades Duras</h3>
+      <div class="skill-grid">
+        <div class="card">Lenguajes de Programación <span>Python, C++, Java, C#</span></div>
+        <div class="card">Frameworks <span>Pytorch, Tensorflow</span></div>
+        <div class="card">Idiomas <span>Inglés Avanzado (C1), Francés Intermedio (B1)</span></div>
+      </div>
+
+      <h3 style="color:#ffb6c1; margin-top:2rem;">Habilidades Blandas</h3>
+      <div class="skill-grid">
+        <div class="skill">Pensamiento crítico • Resolución de problemas</div>
+        <div class="skill">Comunicación • Trabajo en equipo</div>
+        <div class="skill">Autogestión • Adaptabilidad</div>
+      </div>
+    </section>
+
+    <section class="links">
+      <h2>Contacto</h2>
+      <div class="social-links">
+        <a href="mailto:jimenajimenavale@gmail.com">Email</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">GitHub</a>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact">
+    <h2>¿Hablamos?</h2>
+    <p>Puedes escribirme directamente a <a href="mailto:jimenajimenavale@gmail.com">mi correo</a> o encontrarme en LinkedIn.</p>
+    <p style="margin-top: 1rem;">©️ 2025 Jimena Ortega</p>
+  </footer>
+
+  <script>
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('pantallaInicio').classList.add('oculta');
+      }, 3000);
+    });
+  </script>
+
+</body>
+</html>
